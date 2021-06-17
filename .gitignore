@@ -1,0 +1,9 @@
+.vscode
+*.sqlite
+*.txt
+*.out
+*.key
+.env
+.env.*
+release/
+.idea
