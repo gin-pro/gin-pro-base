@@ -2,21 +2,21 @@ package routerx
 
 import "github.com/gin-gonic/gin"
 
-type ApiRouter struct {
+type ApiEngine struct {
 	engine *gin.Engine
 }
 
-func NewRouter() *ApiRouter {
-	return &ApiRouter{
-		engine: gin.Default(),
+func NewRouter(engine *gin.Engine) *ApiEngine {
+	return &ApiEngine{
+		engine: engine,
 	}
 }
 
-func (c *ApiRouter) NewGroup(s string) *ApiGroup {
+func (c *ApiEngine) NewGroup(s string) *ApiGroup {
 	return &ApiGroup{
 		group: c.engine.Group(s),
 	}
 }
-func (c *ApiRouter) Run(addr ...string) error {
+func (c *ApiEngine) Run(addr ...string) error {
 	return c.engine.Run(addr...)
 }

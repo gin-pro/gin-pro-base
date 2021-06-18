@@ -8,7 +8,7 @@ type ApiGroup struct {
 	group *gin.RouterGroup
 }
 
-func NewGroup(r *ApiRouter, path string) *ApiGroup {
+func NewGroup(r *ApiEngine, path string) *ApiGroup {
 	return &ApiGroup{
 		group: r.engine.Group(path),
 	}
