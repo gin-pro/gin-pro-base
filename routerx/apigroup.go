@@ -1,4 +1,4 @@
-package routers
+package routerx
 
 import (
 	"github.com/gin-gonic/gin"

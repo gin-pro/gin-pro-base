@@ -1,4 +1,4 @@
-package routers
+package routerx
 
 import "github.com/gin-gonic/gin"
 
@@ -16,4 +16,7 @@ func (c *ApiRouter) NewGroup(s string) *ApiGroup {
 	return &ApiGroup{
 		group: c.engine.Group(s),
 	}
+}
+func (c *ApiRouter) Run(addr ...string) error {
+	return c.engine.Run(addr...)
 }
