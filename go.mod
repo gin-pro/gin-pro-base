@@ -1,4 +1,4 @@
-module gin-pro/gin-pro-base
+module github.com/gin-pro/gin-pro-base
 
 go 1.15
 
