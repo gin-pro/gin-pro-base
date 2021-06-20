@@ -2,6 +2,7 @@ package sqlx
 
 import (
 	"fmt"
+	_ "github.com/go-sql-driver/mysql"
 	"xorm.io/xorm"
 )
 
