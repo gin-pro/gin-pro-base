@@ -20,3 +20,7 @@ func (c *ApiEngine) NewGroup(s string) *ApiGroup {
 func (c *ApiEngine) Run(addr ...string) error {
 	return c.engine.Run(addr...)
 }
+func (r *ApiEngine) Use(middleware ...gin.HandlerFunc) *ApiEngine {
+	r.Use(middleware...)
+	return r
+}
