@@ -6,7 +6,7 @@ import (
 )
 
 func TestNew(t *testing.T) {
-	router := NewRouter()
+	router := NewRouter(nil)
 
 	group := router.NewGroup("/hello")
 	group.POST("test", Hello)
