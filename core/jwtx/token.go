@@ -1,6 +1,7 @@
 package jwtx
 
 import (
+	"fmt"
 	"github.com/dgrijalva/jwt-go"
 	"time"
 )
@@ -25,11 +26,13 @@ func GetToken(s string, key string) jwt.MapClaims {
 	tk, err := jwt.Parse(s, func(token *jwt.Token) (interface{}, error) {
 		return []byte(key), nil
 	})
-	if err == nil {
-		claim, ok := tk.Claims.(jwt.MapClaims)
-		if ok {
-			return claim
-		}
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	claim, ok := tk.Claims.(jwt.MapClaims)
+	if ok {
+		return claim
 	}
 	return nil
 }
