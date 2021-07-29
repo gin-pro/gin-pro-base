@@ -25,3 +25,7 @@ func (r *ApiEngine) Use(middleware ...gin.HandlerFunc) *ApiEngine {
 	r.engine.Use(middleware...)
 	return r
 }
+
+func (r *ApiEngine) Engine() *gin.Engine {
+	return r.engine
+}
