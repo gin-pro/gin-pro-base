@@ -1,6 +1,7 @@
 package sqlx
 
 import (
+	_ "github.com/mattn/go-sqlite3"
 	"xorm.io/xorm"
 )
 
