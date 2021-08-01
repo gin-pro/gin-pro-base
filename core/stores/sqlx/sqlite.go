@@ -10,7 +10,6 @@ type SqliteConf struct {
 	ShowSQL  bool   `json:"showsql"`
 }
 
-//InitSqlite init sqlite3
 func InitSqlite(conf *SqliteConf) (*xorm.Engine, error) {
 	return DefaultDB("sqlite3", conf.Database)
 }
