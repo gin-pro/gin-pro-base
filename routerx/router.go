@@ -8,11 +8,11 @@ import (
 	"strings"
 )
 
-func RequestParseJson(fn interface{}) gin.HandlerFunc {
-	return requestParseJson(fn)
+func RequestBind(fn interface{}) gin.HandlerFunc {
+	return requestBind(fn)
 }
 
-func requestParseJson(fn interface{}) gin.HandlerFunc {
+func requestBind(fn interface{}) gin.HandlerFunc {
 	fnv := reflect.ValueOf(fn)
 	if fnv.Kind() != reflect.Func {
 		return nil
