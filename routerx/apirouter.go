@@ -6,6 +6,12 @@ type ApiEngine struct {
 	engine *gin.Engine
 }
 
+func Default() *ApiEngine {
+	return &ApiEngine{
+		engine: gin.Default(),
+	}
+}
+
 func NewRouter(engine *gin.Engine) *ApiEngine {
 	return &ApiEngine{
 		engine: engine,
