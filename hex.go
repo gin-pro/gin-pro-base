@@ -1,4 +1,4 @@
-package main
+package ginpro
 
 import (
 	"crypto/md5"
