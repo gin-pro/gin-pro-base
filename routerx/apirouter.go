@@ -1,6 +1,9 @@
 package routerx
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"html/template"
+)
 
 type ApiEngine struct {
 	engine *gin.Engine
@@ -33,5 +36,14 @@ func (r *ApiEngine) Use(middleware ...gin.HandlerFunc) *ApiEngine {
 }
 
 func (r *ApiEngine) Engine() *gin.Engine {
+	r.engine.LoadHTMLFiles()
 	return r.engine
+}
+
+func (r *ApiEngine) LoadHTMLFiles(files ...string) {
+	r.engine.LoadHTMLFiles(files...)
+}
+
+func (r *ApiEngine) SetHTMLTemplate(templ *template.Template) {
+	r.engine.SetHTMLTemplate(templ)
 }
