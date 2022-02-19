@@ -47,3 +47,7 @@ func (r *ApiEngine) LoadHTMLFiles(files ...string) {
 func (r *ApiEngine) SetHTMLTemplate(templ *template.Template) {
 	r.engine.SetHTMLTemplate(templ)
 }
+
+func (r *ApiEngine) LoadHTMLGlob(pattern string) {
+	r.engine.LoadHTMLGlob(pattern)
+}
