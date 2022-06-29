@@ -1,4 +1,4 @@
-package ginpro
+package uid
 
 import (
 	"crypto/md5"
