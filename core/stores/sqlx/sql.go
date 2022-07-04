@@ -4,6 +4,6 @@ import (
 	"xorm.io/xorm"
 )
 
-func DefaultDB(driverName, dataSourceName string) (*xorm.Engine, error) {
-	return xorm.NewEngine(driverName, dataSourceName)
+type InitDB interface {
+	DefaultDB() (*xorm.Engine, error)
 }

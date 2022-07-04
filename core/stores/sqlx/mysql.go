@@ -15,12 +15,17 @@ type MysqlConf struct {
 	ShowSQL  bool   `json:"showsql"`
 }
 
-func InitMysql(conf *MysqlConf) (*xorm.Engine, error) {
+func (c MysqlConf) DefaultDB() (*xorm.Engine, error) {
 	url := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True",
-		conf.Username,
-		conf.Password,
-		conf.Host,
-		conf.Port,
-		conf.Database)
-	return DefaultDB("mysql", url)
+		c.Username,
+		c.Password,
+		c.Host,
+		c.Port,
+		c.Database)
+	engine, err := xorm.NewEngine("mysql", url)
+	if err != nil {
+		return nil, err
+	}
+	engine.ShowSQL(c.ShowSQL)
+	return engine, err
 }

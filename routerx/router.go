@@ -75,9 +75,15 @@ func bind(c *gin.Context, fnt reflect.Type) []reflect.Value {
 				return nil
 			}
 			inls[i] = argv
-		}
-		if strings.Contains(c.ContentType(), "multipart/form-data") {
+		} else if strings.Contains(c.ContentType(), "multipart/form-data") {
 			argv, err := from(c, argtr)
+			if err != nil {
+				c.String(500, fmt.Sprintf("params err[%d]:%+v", i, err))
+				return nil
+			}
+			inls[i] = argv
+		} else {
+			argv, err := json(c, argtr)
 			if err != nil {
 				c.String(500, fmt.Sprintf("params err[%d]:%+v", i, err))
 				return nil
