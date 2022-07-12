@@ -15,7 +15,22 @@ type MysqlConf struct {
 	ShowSQL  bool   `json:"showsql"`
 }
 
-func (c MysqlConf) DefaultDB() (*xorm.Engine, error) {
+func NewMysql(host, port, database, userName, passed string, showSql ...bool) *MysqlConf {
+	sSql := false
+	if showSql != nil && len(showSql) > 0 {
+		sSql = showSql[0]
+	}
+	return &MysqlConf{
+		Host:     host,
+		Port:     port,
+		Database: database,
+		Username: userName,
+		Password: passed,
+		ShowSQL:  sSql,
+	}
+}
+
+func (c MysqlConf) defaultDB() (*xorm.Engine, error) {
 	url := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True",
 		c.Username,
 		c.Password,
