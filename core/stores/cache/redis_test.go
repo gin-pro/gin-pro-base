@@ -1,4 +1,4 @@
-package reids
+package cache
 
 import (
 	"context"
@@ -9,7 +9,7 @@ import (
 
 func TestRedis(t *testing.T) {
 	var ctx = context.Background()
-	rdb := DefaultRedis(ctx, "localhost:6379")
+	rdb := DefaultRedis("localhost:6379")
 	err := rdb.Set(ctx, "key", "value", 0).Err()
 	if err != nil {
 		panic(err)
