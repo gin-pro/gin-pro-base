@@ -31,7 +31,7 @@ func NewMysql(host, port, database, userName, passed string, showSql ...bool) *M
 }
 
 func (c MysqlConf) defaultDB() (*xorm.Engine, error) {
-	url := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True",
+	url := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s",
 		c.Username,
 		c.Password,
 		c.Host,
