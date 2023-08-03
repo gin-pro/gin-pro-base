@@ -31,7 +31,7 @@ func (eb *EventBus) Cancl(topic string) {
 		}
 	}()
 	eb.lk.Lock()
-	defer eb.lk.Lock()
+	defer eb.lk.Unlock()
 	if chans, found := eb.Subscribers[topic]; found {
 		for _, channel := range chans {
 			close(channel)
